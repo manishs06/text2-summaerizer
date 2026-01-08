@@ -2,6 +2,8 @@
 
 SummAIze is a powerful, web-based application designed to transform long content into clear, concise summaries instantly. It offers a premium, glassmorphic user interface and a lag-free experience.
 
+**Live Demo:** [https://text-summaerizer3.vercel.app/](https://text-summaerizer3.vercel.app/)
+
 ## Key Features
 
 - **Extractive Summarization**: Selects the most important sentences from the original text using algorithms like TextRank, TF-IDF, and Word Frequency.
