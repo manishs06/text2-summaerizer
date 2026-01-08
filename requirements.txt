@@ -1,8 +1,8 @@
 # Text Summarization Project Requirements
 
-# Data processing and manipulation
-numpy>=1.26.0
-pandas>=2.1.0
+# Data processing and manipulation (Removed to save space on Vercel)
+# numpy>=1.26.0
+# pandas>=2.1.0
 
 # Natural Language Processing
 nltk==3.8.1
@@ -10,23 +10,24 @@ nltk==3.8.1
 # textblob==0.17.1
 # gensim==4.3.2
 
-# Machine Learning
-scikit-learn>=1.3.2
-scipy>=1.11.3
+# Machine Learning & Graph (Independent implementations for Vercel)
+# scikit-learn>=1.3.2
+# scipy>=1.11.3
+networkx==3.1
 
-# Deep Learning (commented out for Vercel compatibility due to size/version issues)
+# Deep Learning (commented out for Vercel compatibility)
 # tensorflow==2.13.0
 # keras==2.13.1
 # torch==2.0.1
 # transformers==4.32.0
 
 # Text processing
-beautifulsoup4==4.12.2
+# beautifulsoup4==4.12.2
 requests==2.31.0
 
-# Visualization
-matplotlib==3.7.2
-seaborn==0.12.2
+# Visualization (Removed to save space)
+# matplotlib==3.7.2
+# seaborn==0.12.2
 
 # Utilities
 tqdm==4.65.0
