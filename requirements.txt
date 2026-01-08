@@ -30,3 +30,8 @@ seaborn==0.12.2
 
 # Utilities
 tqdm==4.65.0
+
+# Web Framework
+flask==2.3.2
+flask-cors==4.0.0
+gunicorn==21.2.0
