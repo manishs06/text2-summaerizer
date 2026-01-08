@@ -74,7 +74,13 @@ def summarize():
         })
         
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        import traceback
+        error_details = traceback.format_exc()
+        print(error_details)  # This will show up in Vercel logs
+        return jsonify({
+            'error': str(e),
+            'details': error_details
+        }), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

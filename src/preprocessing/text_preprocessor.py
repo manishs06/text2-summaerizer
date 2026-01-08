@@ -5,16 +5,22 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.stem import PorterStemmer
 
-# Download required NLTK data
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
+# Configure NLTK to use /tmp for data if on Vercel (read-only filesystem)
+import os
+nltk_data_path = os.path.join('/tmp', 'nltk_data')
+if not os.path.exists(nltk_data_path):
+    os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
 
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
+# Download required NLTK data
+def download_nltk_data():
+    for package in ['punkt', 'stopwords']:
+        try:
+            nltk.data.find(f'tokenizers/{package}' if package == 'punkt' else f'corpora/{package}')
+        except LookupError:
+            nltk.download(package, download_dir=nltk_data_path)
+
+download_nltk_data()
 
 class TextPreprocessor:
     """
