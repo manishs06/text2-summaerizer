@@ -1,9 +1,11 @@
 try:
-    from transformers import pipeline
+    from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
+    import torch
+    TRANSFORMERS_AVAILABLE = True
 except ImportError:
     pipeline = None
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-import torch
+    TRANSFORMERS_AVAILABLE = False
+
 from ..preprocessing.text_preprocessor import TextPreprocessor
 
 class AbstractiveSummarizer:
