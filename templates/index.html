@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SummAIze | Premium Text Summarization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="blob-bg"></div>
+    <div class="blob-bg blob-2"></div>
+    <div class="blob-bg blob-3"></div>
+
+    <main class="container">
+        <header class="fade-in">
+            <div class="logo">
+                <i class="fas fa-bolt-lightning"></i>
+                <h1>Summ<span>AI</span>ze</h1>
+            </div>
+            <p class="subtitle">Transform long content into clear, concise summaries instantly.</p>
+        </header>
+
+        <section class="glass-card main-grid fade-in-up">
+            <div class="input-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-pen-nib"></i> Input Text</h2>
+                    <span id="char-count" class="badge">0 characters</span>
+                </div>
+                <textarea id="input-text" placeholder="Paste your article, document or text here... (minimum 10 characters)"></textarea>
+                
+                <div class="options-grid">
+                    <div class="option-group">
+                        <label>Method</label>
+                        <div class="segmented-control">
+                            <input type="radio" name="method" value="extractive" id="method-extractive" checked>
+                            <label for="method-extractive">Extractive</label>
+                            <input type="radio" name="method" value="abstractive" id="method-abstractive">
+                            <label for="method-abstractive">Abstractive</label>
+                        </div>
+                    </div>
+
+                    <div id="extractive-options" class="sub-options">
+                        <div class="option-group">
+                            <label>Algorithm</label>
+                            <select id="algorithm">
+                                <option value="textrank">TextRank</option>
+                                <option value="tfidf">TF-IDF</option>
+                                <option value="frequency">Word Frequency</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label>Sentences: <span id="sentence-val">3</span></label>
+                            <input type="range" id="num_sentences" min="1" max="10" value="3">
+                        </div>
+                    </div>
+
+                    <div id="abstractive-options" class="sub-options hidden">
+                        <div class="option-group">
+                            <label>Max Length: <span id="max-len-val">130</span></label>
+                            <input type="range" id="max_length" min="50" max="500" value="130">
+                        </div>
+                        <div class="option-group">
+                            <label>Min Length: <span id="min-len-val">30</span></label>
+                            <input type="range" id="min_length" min="10" max="100" value="30">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="summarize-btn" class="primary-btn">
+                    <span>Generate Summary</span>
+                    <i class="fas fa-magic"></i>
+                </button>
+            </div>
+
+            <div class="output-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-square-poll-horizontal"></i> Summary</h2>
+                    <div class="actions">
+                        <button id="copy-btn" class="icon-btn" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+                
+                <div id="result-container" class="result-placeholder">
+                    <div class="placeholder-content">
+                        <i class="fas fa-robot"></i>
+                        <p>Your summary will appear here once you click "Generate Summary"</p>
+                    </div>
+                    
+                    <div id="loading" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Synthesizing insights...</p>
+                    </div>
+
+                    <div id="summary-content" class="hidden">
+                        <p id="summary-text"></p>
+                    </div>
+                </div>
+
+                <div id="stats" class="stats-grid hidden">
+                    <div class="stat-card">
+                        <span class="stat-label">Reduction</span>
+                        <span id="stat-reduction" class="stat-value">0%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Original</span>
+                        <span id="stat-original" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Summary</span>
+                        <span id="stat-summary" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="fade-in">
+            <p>&copy; 2026 SummAIze. Built for speed and clarity.</p>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
